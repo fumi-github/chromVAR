@@ -503,7 +503,7 @@ compute_deviations_single <- function(peak_set,
                                     fragments_per_sample)
     sampled_deviation <- (sampled - sampled_expected)/sampled_expected
 
-    bg_overlap <- mean(sample_mat %*% t(tf_vec)) / tf_count
+    bg_overlap <- mean(Matrix(sample_mat, sparse = FALSE) %*% t(tf_vec)) / tf_count
   }
 
   fail_filter <- which(expected < threshold)
