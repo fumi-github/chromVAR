@@ -498,7 +498,7 @@ compute_deviations_single <- function(peak_set,
                    dims = c(niterations,
                             nrow(counts_mat)))
     
-    sampled <- as.matrix(sample_mat %*% counts_mat)
+    sampled <- as.matrix(Matrix(sample_mat, sparse = FALSE) %*% counts_mat)
     sampled_expected <- as.matrix(sample_mat %*% expectation %*% 
                                     fragments_per_sample)
     sampled_deviation <- (sampled - sampled_expected)/sampled_expected
