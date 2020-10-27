@@ -483,7 +483,7 @@ compute_deviations_single <- function(peak_set,
                            dims = c(1,
                                     nrow(counts_mat)))
     
-    observed <- as.vector(tf_vec %*% counts_mat)
+    observed <- as.vector(Matrix(tf_vec, sparse = FALSE) %*% counts_mat)
     
     expected <- as.vector(tf_vec %*% expectation %*% fragments_per_sample)
     observed_deviation <- (observed - expected)/expected
